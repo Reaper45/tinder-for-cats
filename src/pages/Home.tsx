@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { ICat } from "components/Cat";
+// import { ICat } from "components/Cat";
 import { makeGetRequest } from "lib/utils";
 
 interface IHomeState {
-  cats: ICat[] | any[];
+  cats: CatType[] | any[];
 }
 
 class Home extends React.Component<{}, IHomeState> {

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import styled from "styled-components";
 
+import Profile from './Profile';
+
 const AppWrapper = styled("div")`
   height: 100%;
   width: 100%;
@@ -21,7 +23,7 @@ const MainWrapper = styled("main")`
 const NavWrapper = styled("nav")`
   width: 25%;
   max-width: 420px;
-  min-width: 300px;
+  min-width: 330px;
   height: 100%;
   box-shadow: 3px 0 6px rgba(0, 0, 0, .14);
   display: block;
@@ -32,7 +34,9 @@ const AppLayout: React.FC<{
 }> = ({ render, ...rest }) => {
   return (
     <AppWrapper>
-      <NavWrapper>Menu</NavWrapper>
+      <NavWrapper>
+        <Profile />
+      </NavWrapper>
       <MainWrapper>{render(rest)}</MainWrapper>
     </AppWrapper>
   );

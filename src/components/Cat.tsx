@@ -1,9 +1,7 @@
 import * as React from "react";
 
-export interface ICat {}
-
 interface ICatProps {
-  cat: ICat
+  cat: CatType
 }
 
 const Cat: React.FC<ICatProps> = ({ cat }) => {
