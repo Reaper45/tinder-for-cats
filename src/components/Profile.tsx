@@ -23,7 +23,7 @@ const ProfileWrapper = styled("div")`
   }
 `;
 
-const Avatar = styled("nav")<{ avatar?: string }>`
+const Avatar = styled("div")<{ avatar?: string }>`
   border: solid 2px ${props => props.theme.colors.light};
   width: 40px;
   height: 40px;

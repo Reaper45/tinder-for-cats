@@ -1,18 +1,30 @@
-import { observable } from "mobx";
+import CatStore, { ICatStore } from "./CatStore";
+import { autorun } from "mobx";
 
-interface IStore {
+export interface IRootStore {
   party: PartyType;
-  cats: CatType[];
+  catsStore: ICatStore;
 }
 
-class Store implements IStore {
+class Store implements IRootStore {
   public party: PartyType = {
     id: "3c197875-8abe-4bf0-8ed3-76c3c7e48eb8",
     name: "Mwashighadi Joram",
     title: "Front-End Engineer"
   };
 
-  @observable public cats: CatType[] = [];
+  public catsStore: ICatStore;
+
+  constructor() {
+    this.catsStore = new CatStore(this);
+  }
+
 }
 
 export const store = new Store();
+
+autorun(() => {
+  if (store.catsStore.cats.length !== 0  && store.catsStore.cats.length <= 3) {
+    console.log("updating");
+  }
+});

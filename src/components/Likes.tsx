@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import * as React from "react";
+import { useObserver } from "mobx-react-lite";
+
+import { store } from "store";
 
 const LikesWrapper = styled("div")`
   width: 100%;
@@ -20,28 +23,48 @@ const LikesWrapper = styled("div")`
   }
 `;
 
-const Like = styled("div")`
+const Like = styled("div")<{ url: string }>`
   width: 100%;
-  height: 80px;
-  padding: 0 1rem;
-  background: #f5f5f5;
-  border-radius: 5px;
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   box-sizing: border-box;
   margin-bottom: 1rem;
+  > div:first-of-type {
+    width: 50px;
+    height: 50px;
+    display: block;
+    background: url(${props => props.url}) #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 1em;
+    border-radius: 5px;
+  }
+  > div:last-of-type {
+    flex-grow: 1;
+    b {
+      color: ${props => props.theme.colors.dark};
+      display: block;
+    }
+  }
 `;
 
 const Likes: React.FC = () => {
-  return (
+  return useObserver(() => (
     <LikesWrapper>
       <b>Recent Likes</b>
       <br />
-      <Like />
-      <Like />
-      <Like />
-      <Like />
+      {store.catsStore.likes.map(likedCat => (
+        <Like key={likedCat.id} url={likedCat.url}>
+          <div title="Cat" />
+          <div>
+            <b>Cats Name Missing</b>
+          </div>
+        </Like>
+      ))}
     </LikesWrapper>
-  );
+  ));
 };
 
 export default Likes;

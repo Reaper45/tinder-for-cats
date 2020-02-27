@@ -12,4 +12,9 @@ declare type PartyType = {
   title: string;
 };
 
-declare type CatType = {};
+declare type CatType = {
+  id: string;
+  url: string;
+};
+
+declare type SwipeTo = "left" | "right" | null;
