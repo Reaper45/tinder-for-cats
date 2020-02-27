@@ -25,9 +25,19 @@ const NavWrapper = styled("nav")`
   width: 25%;
   max-width: 420px;
   min-width: 330px;
+  background: #fff;
   height: 100%;
-  box-shadow: 3px 0 6px rgba(0, 0, 0, .14);
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.14);
   display: block;
+  transition: all 200ms ease-in-out;
+  @media (max-width: 1025px) {
+    position: absolute;
+    top: 0;
+    transform: translateX(-100%);
+  }
+  > div {
+    position: relative;
+  }
 `;
 
 const AppLayout: React.FC<{
