@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from "styled-components";
 
 import Profile from './Profile';
+import Likes from './Likes';
 
 const AppWrapper = styled("div")`
   height: 100%;
@@ -36,6 +37,8 @@ const AppLayout: React.FC<{
     <AppWrapper>
       <NavWrapper>
         <Profile />
+        <br/>
+        <Likes />
       </NavWrapper>
       <MainWrapper>{render(rest)}</MainWrapper>
     </AppWrapper>

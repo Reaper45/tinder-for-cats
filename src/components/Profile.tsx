@@ -8,6 +8,7 @@ const ProfileWrapper = styled("div")`
   flex-direction: row;
   align-items: center;
   padding: 15px;
+  box-sizing: border-box;
   background: ${props => props.theme.colors.dark};
   > div:last-of-type {
     flex-grow: 1;
@@ -17,7 +18,7 @@ const ProfileWrapper = styled("div")`
     }
     small {
       color: ${props => props.theme.colors.light};
-      opacity: .66;
+      opacity: 0.66;
     }
   }
 `;

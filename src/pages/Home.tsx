@@ -5,11 +5,6 @@ import { useState, useEffect } from "react";
 import { makeGetRequest } from "lib/utils";
 import Cat from "components/Cat";
 
-const HomeWrapper = styled("div")`
-  height: 100%;
-  width: 100%;
-`;
-
 const CatsContainer = styled("div")`
   width: 40%;
   height: 100%;
@@ -35,11 +30,9 @@ const Home: React.FC = () => {
   });
   console.log(cats)
   return (
-    <HomeWrapper>
-      <CatsContainer>
-        <Cat />
-      </CatsContainer>
-    </HomeWrapper>
+    <CatsContainer>
+      <Cat />
+    </CatsContainer>
   );
 };
 
