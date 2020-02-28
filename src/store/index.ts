@@ -1,14 +1,17 @@
 import CatStore, { ICatStore } from "./CatStore";
-import { autorun } from "mobx";
+import { autorun, observable } from "mobx";
+
+type SetPartyFn = (party: PartyType) => void;
 
 export interface IRootStore {
   party: PartyType;
   catsStore: ICatStore;
+  setParty: SetPartyFn;
 }
 
 class Store implements IRootStore {
-  public party: PartyType = {
-    id: "3c197875-8abe-4bf0-8ed3-76c3c7e48eb8",
+  // Placeholder user details
+  @observable public party: PartyType = {
     name: "Mwashighadi Joram",
     title: "Front-End Engineer"
   };
@@ -19,12 +22,16 @@ class Store implements IRootStore {
     this.catsStore = new CatStore(this);
   }
 
+  public setParty: SetPartyFn = (party) => {
+    this.party = party;
+  }
 }
 
 export const store = new Store();
 
+// Fetch more cats if only 3 remaining
 autorun(() => {
-  if (store.catsStore.cats.length !== 0  && store.catsStore.cats.length <= 3) {
-    console.log("updating");
+  if (store.catsStore.cats.length === 5) {
+    store.catsStore.getMoreCats();
   }
 });

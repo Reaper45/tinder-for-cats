@@ -52,7 +52,7 @@ const Image = styled("div")<{ img?: string; swipeTo: SwipeTo }>`
   min-height: 550px;
   display: block;
   flex-grow: 1;
-  transition: all 100ms ease-out;
+  transition: all 200ms ease-out;
   opacity: 1;
   margin: 0 auto;
   ${props =>
@@ -118,7 +118,7 @@ const Cat: React.FC<ICatProps> = ({ cat, index }) => {
               disLikeCat(cat);
               store.catsStore.remove(cat!.id);
               setSwipeTo(null);
-            }, 150);
+            }, 200);
           }}
         >
           <img src={disLikeIcon} alt="Nope" />
@@ -132,7 +132,7 @@ const Cat: React.FC<ICatProps> = ({ cat, index }) => {
               likeCat(cat);
               store.catsStore.remove(cat!.id);
               setSwipeTo(null);
-            }, 150);
+            }, 200);
           }}
         >
           <img src={likeIcon} alt="Like" />

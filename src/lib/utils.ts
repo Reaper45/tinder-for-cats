@@ -1,7 +1,7 @@
 import { store } from "store";
 
-const API_END_POINT =
-  "https://api.thecatapi.com/v1/images/search?limit=5&page=10&order=Desc";
+const endPoint = (page: number) =>
+  `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}&order=Desc`;
 
 // Extend node typings
 declare global {
@@ -12,8 +12,9 @@ declare global {
   }
 }
 
-export const makeGetRequest = async (): Promise<Response> => {
-  return await fetch(API_END_POINT, {
+export const fetchCats = async (page = 1): Promise<Response> => {
+  const url = endPoint(page);
+  return await fetch(url, {
     method: "GET",
     headers: {
       "x-api-key": process.env.REACT_APP_CATS_API_KEY
