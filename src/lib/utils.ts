@@ -29,8 +29,12 @@ export const likeCat = (cat: CatType) => {
   store.catsStore.like(cat);
 
   if (cats) {
-    const parsedCats: CatType[] = JSON.parse(cats);
-    const existingCat = parsedCats.find(parsedCat => parsedCat.id === cat?.id);
+    const parsedCats: any[] = JSON.parse(cats);
+
+    const existingCat = parsedCats.find((c: string) => {
+      const parsedCat = JSON.parse(c);
+      return parsedCat.id === cat?.id;
+    });
 
     if (existingCat === undefined) {
       localStorage.setItem(
@@ -48,8 +52,12 @@ export const DIS_LIKES_KEY = "DIS_LIKED_CATS";
 export const disLikeCat = (cat: CatType) => {
   const cats = localStorage.getItem(DIS_LIKES_KEY);
   if (cats) {
-    const parsedCats: CatType[] = JSON.parse(cats);
-    const existingCat = parsedCats.find(parsedCat => parsedCat.id === cat?.id);
+    const parsedCats: any[] = JSON.parse(cats);
+
+    const existingCat = parsedCats.find((c: string) => {
+      const parsedCat = JSON.parse(c);
+      return parsedCat.id === cat?.id;
+    });
 
     if (existingCat === undefined) {
       localStorage.setItem(
